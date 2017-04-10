@@ -1,10 +1,54 @@
 'use strict'
-const api = require('express').Router()
-const db = require('../db')
+const api = require('express').Router();
+const db = require('../db/models');
+const Student = db.Student;
+const Campus = db.Campus;
 
-// If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
-	// I know this because we automatically send index.html for all requests that don't make sense in our backend.
-	// Ideally you would have something to handle this, so if you have time try that out!
-api.get('/hello', (req, res) => res.send({hello: 'world'}))
+// student routes //
+////////////////////
+api.get('/students', (req, res) => {
+	Student.findAll({})
+	.then(function (allStudents) {
+		res.send(allStudents);
+	});
+});
 
-module.exports = api
+api.get('/students/:id', (req, res) => {
+	Student.findById(req.params.id)
+	.then(function (foundStudent) {
+		res.send(foundStudent);
+	});
+});
+
+api.post('/students', (req, res, next) => {
+	Student.create(req.body)
+	.then(function (newStudent) {
+		res.send(newStudent);
+	})
+	.catch(next);
+});
+
+// campus routes //
+///////////////////
+api.get('/campuses', (req, res) => {
+	Campus.findAll({})
+	.then(function (allCampuses) {
+		res.send(allCampuses);
+	});
+});
+
+api.get('/campuses/:id', (req, res) => {
+	Campus.findById(req.params.id)
+	.then(function (foundCampus) {
+		res.send(foundCampus);
+	});
+});
+
+api.post('/campuses', (req, res, next) => {
+	Campus.create(req.body)
+	.then(function (newCampus) {
+		res.send(newCampus);
+	});
+});
+
+module.exports = api;

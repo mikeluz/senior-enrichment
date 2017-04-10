@@ -15,4 +15,5 @@ var options = {};
 // options.classMethods
 // etc...
 
-module.exports = db.define('campus', schema, options);
+const Campus = db.define('campus', schema, options);
+module.exports = Campus;

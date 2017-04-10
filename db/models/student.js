@@ -1,6 +1,6 @@
 'use strict';
-var Sequelize = require('sequelize')
-var db = require('../index.js')
+var Sequelize = require('sequelize');
+var db = require('../index.js');
 
 var schema = {};
 
@@ -20,4 +20,6 @@ var options = {};
 // options.classMethods
 // etc...
 
-module.exports = db.define('student', schema, options);
+const Student = db.define('student', schema, options);
+
+module.exports = Student;
