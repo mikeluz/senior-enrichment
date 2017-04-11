@@ -70,11 +70,11 @@ render (
             </Route>
         </Route>
         <Route path="/api/campuses/:id/edit" component={EditCampusContainer}/>
-        <Route path="/success" component={Deleted} onEnter={() => loadAll()} />
+        <Route path="/success" component={Deleted} onEnter={() => loadAll()}/>
         <Route path="/jokes" component={Root}/>
     		<IndexRoute component={Root}/>
     	</Route>
-	</Router>
+	  </Router>
   </Provider>,
   document.getElementById('main')
 )

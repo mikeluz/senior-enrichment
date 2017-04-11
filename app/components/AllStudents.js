@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default function AllStudents (props) {
 
-	var students = props.allStudents;
+	const students = props.allStudents;
 
 	return (
 		/* must wrap everything in a div!! 
@@ -25,7 +25,7 @@ export default function AllStudents (props) {
 						<tr key={student.id}>
 						<td><Link to={`/api/students/${student.id}`}>{student.name}</Link></td>
 						<td>{student.email}</td>
-						<td><Link to={`/api/campuses/${student.campusId}`}>{student.campus.name}</Link></td>
+						<td><Link to={`/api/campuses/${student.campusId}`}>{student.campus && student.campus.name}</Link></td>
 						</tr>
 					))
 				}
