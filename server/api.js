@@ -20,10 +20,29 @@ api.get('/students/:id', (req, res) => {
 	});
 });
 
-api.post('/students', (req, res, next) => {
-	Student.create(req.body)
-	.then(function (newStudent) {
-		res.send(newStudent);
+// api.post('/students', (req, res, next) => {
+// 	Campus.findOr
+// 	Student.create(req.body)
+// 	.then(function (newStudent) {
+// 		res.send(newStudent);
+// 	})
+// 	.catch(next);
+// });
+
+api.post('/students', function(req, res, next) { // create new
+    Campus.findOrCreate({
+        where: {
+            name: req.body.campus
+        }
+    })
+    .spread(function(campus) {
+        return Student.create(req.body)
+            .then(function(newStudent) {
+                return newStudent.setCampus(campus);
+            });
+    })
+	.then(function(student) {
+	    res.redirect('/');
 	})
 	.catch(next);
 });
@@ -47,8 +66,9 @@ api.get('/campuses/:id', (req, res) => {
 api.post('/campuses', (req, res, next) => {
 	Campus.create(req.body)
 	.then(function (newCampus) {
-		res.send(newCampus);
+	    res.redirect('/');
 	});
 });
 
 module.exports = api;
+

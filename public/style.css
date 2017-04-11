@@ -1,5 +1,27 @@
 body {
 	text-align: center;
+	margin: auto;
+	font-family: 'Press Start 2P', cursive;
+	padding: 20px;
+}
+
+li {
+    list-style-type: none;
+    display: inline;
+}
+
+#center-table {
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/*#left-form {
+	text-align: left;
+	left-margin: 20%;
+}
+*/
+table, th, td {
+   border: 1px solid black;
 }
 
 h1 {

@@ -12,7 +12,7 @@ import { loadAllStudents, setCurrentStudent } from './action-creators/students';
 
 import store from './store';
 import Root from './components/Root';
-import AppContainer from './containers/AppContainer';
+import App from './containers/App';
 import AddStudentContainer from './containers/AddStudentContainer';
 import AllStudentsContainer from './containers/AllStudentsContainer';
 import SingleStudentContainer from './containers/SingleStudentContainer';
@@ -28,7 +28,7 @@ const loadAll = () => {
 render (
   <Provider store={store}>
     <Router history={hashHistory}>
-    	<Route path="/" onEnter={() => loadAll()}>
+    	<Route path="/" component={App} onEnter={() => loadAll()}>
     		<Route path="/api/students" component={AllStudentsContainer} />
     		<Route path="/api/students/add" component={AddStudentContainer}/>
     		<Route path="/api/students/:id" component={SingleStudentContainer} onEnter={(nextRouterState) => setCurrentStudent(nextRouterState)}/>
@@ -36,7 +36,7 @@ render (
 	   		<Route path="/api/campuses/add" component={AddCampus}/>
     		<Route path="/api/campuses/:id" component={SingleCampusContainer} onEnter={(nextRouterState) => setCurrentCampus(nextRouterState)}/>
     		<Route path="/jokes" component={Root}/>
-    		<IndexRoute component={AppContainer}/>
+    		<IndexRoute component={Root}/>
     	</Route>
 	</Router>
   </Provider>,

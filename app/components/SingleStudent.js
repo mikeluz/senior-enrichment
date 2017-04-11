@@ -10,11 +10,9 @@ export default function SingleStudent (props) {
 		must return a single div */
 		<div>
 			<h1>Current Student</h1>
-			<ul>
-			{
-				<h1>{student.name}</h1>
-			}
-			</ul>
+			<h2>{student.name}</h2>
+			<h3>{student.email}</h3>
+			<h1>{student.campusId}</h1>
 		</div>
 
 	)

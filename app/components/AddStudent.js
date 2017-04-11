@@ -8,11 +8,21 @@ export default function (props) {
 		<div>
 		<h1>Add Student</h1>
 		<form method="POST" action="/api/students/">
-			<label>Name:</label>
-				<input name="name" type="text"></input>
-			<label>Email:</label>
-				<input name="email" type="text"></input>
-			<label>Campus:</label>
+		<div id="left-form">
+			<label>Name</label>
+			<br />	
+			<input name="name" type="text"></input>
+		</div>
+		<br />
+		<div id="left-form">
+			<label>Email</label>
+			<br />
+			<input name="email" type="text"></input>
+		</div>
+		<br />
+		<div id="left-form">
+			<label>Campus</label>
+			<br />
 				<select name="campus" type="text">
 					{
 						campuses && campuses.map(campus => (
@@ -20,7 +30,11 @@ export default function (props) {
 						))
 					}
 				</select>
+		</div>
+		<br />
+		<div id="left-form" >
 		<button type="submit">Add Student</button>
+		</div>
 		</form>
 		</div>
 	)

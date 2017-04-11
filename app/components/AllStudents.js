@@ -11,13 +11,28 @@ export default function AllStudents (props) {
 		must return a single div */
 		<div>
 			<h1>All Students</h1>
-			<ul>
-			{
-				students && students.map(student => (
-					<li key={student.id}><Link to={`/api/students/${student.id}`}>{student.name}</Link></li>
-				))
-			}
-			</ul>
+			<div>
+			<table id="center-table">
+				<thead>
+				<tr>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Campus</td>
+				</tr>
+				</thead>
+				<tbody>
+				{
+					students && students.map(student => (
+						<tr key={student.id}>
+						<td><Link to={`/api/students/${student.id}`}>{student.name}</Link></td>
+						<td>{student.email}</td>
+						<td>{student.campusId}</td>
+						</tr>
+					))
+				}
+				</tbody>
+			</table>
+			</div>
 		</div>
 
 	)

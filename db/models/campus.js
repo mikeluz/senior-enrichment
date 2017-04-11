@@ -9,6 +9,11 @@ schema.name = {
   	allowNull: false
 };
 
+schema.motto = {
+	type: Sequelize.STRING,
+	allowNull: false
+};
+
 var options = {};
 
 // options.instanceMethods

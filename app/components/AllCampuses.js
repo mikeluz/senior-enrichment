@@ -11,15 +11,30 @@ export default function AllCampuses (props) {
 		must return a single div */
 		<div>
 			<h1>All Campuses</h1>
-			<ul>
-			{
-				campuses && campuses.map(campus => (
-					<li key={campus.id}><Link to={`/api/campuses/${campus.id}`}>{campus.name}</Link></li>
-				))
-			}
-			</ul>
+			<div>
+			<table id="center-table">
+				<thead>
+				<tr>
+				<td>Name</td>
+				<td>Motto</td>
+				</tr>
+				</thead>
+				<tbody>
+				{
+					campuses && campuses.map(campus => (
+						<tr key={campus.id}>
+						<td><Link to={`/api/campuses/${campus.id}`}>{campus.name}</Link></td>
+						<td>{campus.motto}</td>
+						</tr>
+					))
+				}
+				</tbody>
+			</table>
+			</div>
 		</div>
 
 	)
 
 };
+
+
