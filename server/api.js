@@ -20,15 +20,6 @@ api.get('/students/:id', (req, res) => {
 	});
 });
 
-// api.post('/students', (req, res, next) => {
-// 	Campus.findOr
-// 	Student.create(req.body)
-// 	.then(function (newStudent) {
-// 		res.send(newStudent);
-// 	})
-// 	.catch(next);
-// });
-
 api.post('/students', function(req, res, next) { // create new
     Campus.findOrCreate({
         where: {
@@ -50,7 +41,10 @@ api.post('/students', function(req, res, next) { // create new
 // campus routes //
 ///////////////////
 api.get('/campuses', (req, res) => {
-	Campus.findAll({})
+	console.log('campuses route');
+	Campus.findAll({
+		include: [Student]
+	})
 	.then(function (allCampuses) {
 		res.send(allCampuses);
 	});

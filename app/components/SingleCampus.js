@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default function SingleCampus (props) {
 
@@ -7,10 +8,10 @@ export default function SingleCampus (props) {
 
 		/* must wrap everything in a div!! 
 		must return a single div */
-		<div>
-			<h1>Current Campus</h1>
-			<h2>{campus.name}</h2>
-			<h3>{campus.motto}</h3>
+		<div id="single">
+			<h1>Current Campus</h1><h3>(<Link to={`/api/campuses/add`}>Edit</Link>)</h3>
+			<h2>Name: {campus.name}</h2>
+			<h3>Motto: {campus.motto}</h3>
 		</div>
 
 	)

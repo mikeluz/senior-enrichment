@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function () {
 	return (
-		<div>
+		<div id="single">
 		<h1>Add Campus</h1>
 		<form method="POST" action="/api/campuses/">
 			<div>

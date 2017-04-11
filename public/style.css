@@ -1,13 +1,23 @@
 body {
+	background-image: url('/images/outerspace.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
 	text-align: center;
 	margin: auto;
 	font-family: 'Press Start 2P', cursive;
 	padding: 20px;
+	color: black;
 }
 
 li {
     list-style-type: none;
     display: inline;
+}
+
+ul {
+    left-margin: auto;
+    right-margin: auto;
+    padding-left: 0px;
 }
 
 #center-table {
@@ -21,9 +31,19 @@ li {
 }
 */
 table, th, td {
-   border: 1px solid black;
+   border: 1px solid rgba(0,0,0,0.8);
+   background-color: rgba(255,255,255,0.6);
+}
+
+td {
+	padding: 10px;
 }
 
 h1 {
 	color: red;
+}
+
+#single {
+	background-color: rgba(255,255,255,0.6);
+	padding: 20px;
 }

@@ -5,7 +5,7 @@ export default function (props) {
 	const campuses = props.allCampuses.campuses;
 
 	return (
-		<div>
+		<div id="single">
 		<h1>Add Student</h1>
 		<form method="POST" action="/api/students/">
 		<div id="left-form">
