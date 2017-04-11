@@ -79,7 +79,8 @@ api.delete('/students/:id/delete', (req, res, next) => {
 
 // campus routes //
 ///////////////////
-api.get('/campuses', (req, res) => {
+api.get('/campuses', (req, res, next) => {
+
 	Campus.findAll({
 		include: [Student]
 	})

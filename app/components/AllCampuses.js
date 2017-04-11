@@ -17,6 +17,7 @@ export default function AllCampuses (props) {
 				<tr>
 				<td>Name</td>
 				<td>Motto</td>
+				<td>Enrollment</td>
 				</tr>
 				</thead>
 				<tbody>
@@ -25,6 +26,7 @@ export default function AllCampuses (props) {
 						<tr key={campus.id}>
 						<td><Link to={`/api/campuses/${campus.id}`}>{campus.name}</Link></td>
 						<td>{campus.motto}</td>
+						<td>{campus.enrolled}</td>
 						</tr>
 					))
 				}

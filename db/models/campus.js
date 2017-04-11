@@ -18,7 +18,20 @@ schema.motto = {
 
 // options //
 /////////////
-const options = {};
+const options = {
+	instanceMethods: {
+		enrollment: function() {
+			Student.count({
+				where: {
+					campusId: this.campusId
+				}
+			})
+			.then(function(enrolled) {
+				return enrolled;
+			});
+		}
+	}
+};
 // options.instanceMethods
 // options.classMethods
 // etc...
