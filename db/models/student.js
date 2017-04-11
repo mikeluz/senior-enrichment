@@ -21,17 +21,6 @@ schema.email = {
 /////////////
 const options = {};
 
-options.getterMethods = {
-    campusName: function()  {
-    	return "GO";
-    	Campus.findById(this.campusId)
-    	.then(function (campus) {
-    		console.log(campus.dataValues.name);
-    		return campus.dataValues.name;
-    	});
-    }
-};
-
 // model definition, attach to db //
 ////////////////////////////////////
 const Student = db.define('student', schema, options);

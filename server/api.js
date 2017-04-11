@@ -72,8 +72,9 @@ api.delete('/students/:id/delete', (req, res, next) => {
 		}
 	})
 	.then(function (numberOfDeletedRecords) {
-		res.redirect(`/#/api/students`);
-	});
+		res.json(numberOfDeletedRecords);
+	})
+	.catch(next);
 });
 
 // campus routes //
@@ -121,8 +122,10 @@ api.delete('/campuses/:id/delete', (req, res, next) => {
 		}
 	})
 	.then(function (numberOfDeletedRecords) {
-		res.redirect(`/#/api/campuses`);
-	});
+		res.json(numberOfDeletedRecords);
+	})
+	.catch(next);
+
 });
 
 module.exports = api;
