@@ -110,5 +110,16 @@ api.post('/campuses/:id/edit', (req, res, next) => {
 	.catch(next);
 });
 
+api.delete('/campuses/:id/delete', (req, res, next) => {
+	Campus.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(function (numberOfDeletedRecords) {
+		res.redirect(`/#/api/campuses`);
+	});
+});
+
 module.exports = api;
 

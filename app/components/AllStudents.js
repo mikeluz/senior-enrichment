@@ -6,7 +6,6 @@ export default function AllStudents (props) {
 	var students = props.allStudents;
 
 	return (
-
 		/* must wrap everything in a div!! 
 		must return a single div */
 		<div>
@@ -34,7 +33,6 @@ export default function AllStudents (props) {
 			</table>
 			</div>
 		</div>
-
 	)
 
 };
