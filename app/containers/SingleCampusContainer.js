@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = function (state) {
 	return {
-		selectedCampus: state.campuses.currentCampus
+		selectedCampus: state.campuses.currentCampus,
+		students: state.students.students
 	};
 };
 

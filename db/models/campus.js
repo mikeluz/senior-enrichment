@@ -1,8 +1,10 @@
 'use strict';
-var Sequelize = require('sequelize')
-var db = require('../index.js')
+const Sequelize = require('sequelize');
+const db = require('../index.js');
 
-var schema = {};
+// schema //
+////////////
+const schema = {};
 
 schema.name = {
   	type: Sequelize.STRING,
@@ -14,11 +16,17 @@ schema.motto = {
 	allowNull: false
 };
 
-var options = {};
-
+// options //
+/////////////
+const options = {};
 // options.instanceMethods
 // options.classMethods
 // etc...
 
+// model definition, attach to db //
+////////////////////////////////////
 const Campus = db.define('campus', schema, options);
+
+// export it //
+///////////////
 module.exports = Campus;

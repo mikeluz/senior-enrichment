@@ -1,8 +1,11 @@
 'use strict';
 var Sequelize = require('sequelize');
-var db = require('../index.js');
+const db = require('../index.js');
+const Campus = require('./campus');
 
-var schema = {};
+// schema //
+////////////
+const schema = {};
 
 schema.name = {
   	type: Sequelize.STRING,
@@ -14,12 +17,25 @@ schema.email = {
   	allowNull: false
 };
 
-var options = {};
+// options //
+/////////////
+const options = {};
 
-// options.instanceMethods
-// options.classMethods
-// etc...
+options.getterMethods = {
+    campusName: function()  {
+    	Campus.findById(this.campusId)
+    	.then(function (campus) {
+    		console.log(campus.dataValues.name);
+    		return campus.dataValues.name;
+    	});
+    }
+};
 
+// model definition, attach to db //
+////////////////////////////////////
 const Student = db.define('student', schema, options);
 
+
+// export it //
+///////////////
 module.exports = Student;

@@ -33,7 +33,7 @@ api.post('/students', function(req, res, next) { // create new
             });
     })
 	.then(function(student) {
-	    res.redirect('/');
+	    res.redirect(`/#/api/students/${student.dataValues.id}`);
 	})
 	.catch(next);
 });
@@ -61,6 +61,17 @@ api.post('/students/:id/edit', (req, res, next) => {
 	.catch(next);
 });
 
+api.delete('/students/:id/delete', (req, res, next) => {
+	Student.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(function (numberOfDeletedRecords) {
+		res.redirect(`/#/api/students`);
+	});
+});
+
 // campus routes //
 ///////////////////
 api.get('/campuses', (req, res) => {
@@ -84,6 +95,19 @@ api.post('/campuses', (req, res, next) => {
 	.then(function (newCampus) {
 	    res.redirect('/');
 	});
+});
+
+api.post('/campuses/:id/edit', (req, res, next) => {
+	Campus.update(req.body, {
+    	where: {
+    		id: req.params.id
+    	},
+    	returning: true
+    })
+	.then(function(campus) {
+	    res.redirect(`/#/api/campuses/${req.params.id}`);
+	})
+	.catch(next);
 });
 
 module.exports = api;

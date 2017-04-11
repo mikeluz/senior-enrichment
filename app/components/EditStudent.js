@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default function (props) {
 
@@ -8,6 +9,7 @@ export default function (props) {
 	return (
 		<div id="single">
 		<h1>Edit Student</h1>
+		<h3>(<Link to={`/api/students/${currentStudent.id}/delete`}>Delete</Link>)</h3>
 		<form method="POST" action={`/api/students/${currentStudent.id}/edit`}>
 		<div id="left-form">
 			<label>Name</label>

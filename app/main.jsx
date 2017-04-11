@@ -27,6 +27,10 @@ const loadAll = () => {
   loadAllStudents();
 };
 
+const deleteStudent = (nextRouterState) => {
+  axios.delete(`/api/students/${nextRouterState.params.id}/delete`);
+};
+
 render (
   <Provider store={store}>
     <Router history={hashHistory}>
@@ -35,10 +39,13 @@ render (
     		<Route path="/api/students/add" component={AddStudentContainer}/>
         <Route path="/api/students/:id" component={SingleStudentContainer} onEnter={(nextRouterState) => setCurrentStudent(nextRouterState)}/>
         <Route path="/api/students/:id/edit" component={EditStudentContainer}/>
+        <Route path="/api/students/:id/delete" onEnter={(nextRouterState) => deleteStudent(nextRouterState)}>
+          <IndexRedirect to="/" />
+        </Route>
     		<Route path="/api/campuses" component={AllCampusesContainer} />
 	   		<Route path="/api/campuses/add" component={AddCampus}/>
         <Route path="/api/campuses/:id" component={SingleCampusContainer} onEnter={(nextRouterState) => setCurrentCampus(nextRouterState)}/>
-
+        <Route path="/api/campuses/:id/edit" component={EditCampusContainer}/>
     		<Route path="/jokes" component={Root}/>
     		<IndexRoute component={Root}/>
     	</Route>
