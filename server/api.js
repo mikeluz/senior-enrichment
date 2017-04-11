@@ -38,10 +38,32 @@ api.post('/students', function(req, res, next) { // create new
 	.catch(next);
 });
 
+api.post('/students/:id/edit', (req, res, next) => {
+    Campus.findOrCreate({
+        where: {
+            name: req.body.campus
+        }
+    })
+    .spread(function(campus) {
+        return Student.update(req.body, {
+        	where: {
+        		id: req.params.id
+        	},
+        	returning: true
+        })
+        .spread(function(numberOfUpdatedStudents, updatedStudent) {
+            return updatedStudent[0].setCampus(campus);
+        });
+    })
+	.then(function(student) {
+	    res.redirect(`/#/api/students/${req.params.id}`);
+	})
+	.catch(next);
+});
+
 // campus routes //
 ///////////////////
 api.get('/campuses', (req, res) => {
-	console.log('campuses route');
 	Campus.findAll({
 		include: [Student]
 	})

@@ -24,6 +24,7 @@ export const loadAllStudents = () => {
 };
 
 export const setCurrentStudent = (nextRouterState) => {
+  console.log("state", nextRouterState);
   axios.get(`/api/students/${nextRouterState.params.id}`)
   .then(res => {
     store.dispatch(setStudent(res.data));

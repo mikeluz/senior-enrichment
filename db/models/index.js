@@ -7,6 +7,21 @@
 const Student = require('./student');
 const Campus = require('./campus');
 
+// Student.hook('beforeUpdate', function (student) {
+// 	Student.findById({
+// 		where: {
+// 			id: student.id
+// 		})
+// 	.then(function (student) {
+// 		if (student.campusId)
+// 	})
+//     if (student.campusId !== student.campusId) {
+//         page.urlTitle = page.title.replace(/\s/g, '_').replace(/\W/g, '');
+//     } else {
+//         page.urlTitle = Math.random().toString(36).substring(2, 7);
+//     }
+// });
+
 Student.belongsTo(Campus);
 Campus.hasMany(Student);
 
