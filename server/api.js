@@ -7,14 +7,18 @@ const Campus = db.Campus;
 // student routes //
 ////////////////////
 api.get('/students', (req, res) => {
-	Student.findAll({})
+	Student.findAll({
+		include: [Campus]
+	})
 	.then(function (allStudents) {
 		res.send(allStudents);
 	});
 });
 
 api.get('/students/:id', (req, res) => {
-	Student.findById(req.params.id)
+	Student.findById(req.params.id, {
+		include: [Campus]
+	})
 	.then(function (foundStudent) {
 		res.send(foundStudent);
 	});

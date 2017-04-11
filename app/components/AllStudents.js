@@ -25,7 +25,7 @@ export default function AllStudents (props) {
 						<tr key={student.id}>
 						<td><Link to={`/api/students/${student.id}`}>{student.name}</Link></td>
 						<td>{student.email}</td>
-						<td><Link to={`/api/campuses/${student.campusId}`}>{student.campusName}</Link></td>
+						<td><Link to={`/api/campuses/${student.campusId}`}>{student.campus.name}</Link></td>
 						</tr>
 					))
 				}
