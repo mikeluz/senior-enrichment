@@ -23,6 +23,7 @@ const options = {};
 
 options.getterMethods = {
     campusName: function()  {
+    	return "GO";
     	Campus.findById(this.campusId)
     	.then(function (campus) {
     		console.log(campus.dataValues.name);
